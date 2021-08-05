@@ -17,7 +17,7 @@ int main(int argc, char** argv)
   // Create grid map.
   GridMap map({"elevation", "normal_x", "normal_y", "normal_z"});
   map.setFrameId("map");
-  map.setGeometry(Length(1.2, 2.0), 0.03, Position(0.0, -0.1));
+  map.setGeometry(Length(100, 100), 1.0, Position(0.0, 0.0));
   ROS_INFO("Created map with size %f x %f m (%i x %i cells).\n The center of the map is located at (%f, %f) in the %s frame.",
     map.getLength().x(), map.getLength().y(),
     map.getSize()(0), map.getSize()(1),
