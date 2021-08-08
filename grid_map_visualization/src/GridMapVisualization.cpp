@@ -22,7 +22,7 @@ GridMapVisualization::GridMapVisualization(ros::NodeHandle& nodeHandle,
       factory_(nodeHandle_),
       isSubscribed_(false)
 {
-  ROS_INFO("Grid map visualization node started.");
+  ROS_INFO("[Grid Visualization] started.");
   readParameters();
   activityCheckTimer_ = nodeHandle_.createTimer(activityCheckDuration_,
                                                 &GridMapVisualization::updateSubscriptionCallback,
@@ -115,8 +115,8 @@ bool GridMapVisualization::readParameters()
     auto visualization = factory_.getInstance(type, name);
     visualization->readParameters(config[i]);
     visualizations_.push_back(visualization);
-    //ROS_INFO("%s: Configured visualization of type '%s' with name '%s'.",
-             visualizationsParameter_.c_str(), type.c_str(), name.c_str());
+//    ROS_INFO("%s: Configured visualization of type '%s' with name '%s'.",
+//             visualizationsParameter_.c_str(), type.c_str(), name.c_str());
   }
 
   return true;
@@ -128,7 +128,7 @@ bool GridMapVisualization::initialize()
     visualization->initialize();
   }
   updateSubscriptionCallback(ros::TimerEvent());
-  ROS_INFO("Grid map visualization initialized.");
+  ROS_INFO("[Grid Visualization] initialized.");
   return true;
 }
 
